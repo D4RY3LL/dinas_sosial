@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dinas Sosial - Layanan</title>
+</head>
+<body style="margin:0; font-family:Arial, sans-serif; background-color:#fff; color:#333;">
+
+  <!-- NAVBAR -->
+  <div style="background-color: #6b7c4a; color: white; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: relative;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png" alt="Logo Bogor" style="height:40px; width:40px;">
+      <span><b>DINAS SOSIAL</b></span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <a href="profil.html" style="color: white; text-decoration: none;">Profil</a>
+      <a href="layanan.html" style="color:black; text-decoration:none; padding:5px 10px; font-weight:bold; border-bottom:3px solid #c9a23f; background-color:#f2f2e9; border-radius:5px 5px 0 0;">Layanan</a>
+      <a href="arsip.html" style="color: white; text-decoration: none;">Arsip</a>
+
+      <!-- Dropdown Menu (Burger) -->
+      <div style="position: relative;">
+        <span onclick="toggleDropdown()" style="cursor: pointer; font-size: 28px;">&#9776;</span>
+        <div id="dropdown" style="display: none; position: absolute; right: 0; top: 35px; background: white; color: black; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); min-width: 150px;">
+          <a href="pengaduan.html" style="display:block; padding:8px 12px; text-decoration:none; color:black;">Pengaduan</a>
+          <a href="dokumen.html" style="display:block; padding:8px 12px; text-decoration:none; color:black;">Dokumen</a>
+          <a href="kontak.html" style="display:block; padding:8px 12px; text-decoration:none; color:black;">Kontak</a>
+          <a href="login.html" style="display:block; padding:8px 12px; text-decoration:none; color:black;">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div style="display:flex; justify-content:space-around; align-items:flex-start; padding:30px; flex-wrap:wrap;">
+
+    <!-- Kiri -->
+    <div style="flex:1; margin:20px; text-align:center; min-width:200px;">
+      <h2>Layanan Kami <br>Bebas Biaya</h2>
+      <div style="font-size:40px; font-weight:bold; margin:10px 0;">Rp 0,</div>
+      <div>GRATIS</div>
+    </div>
+
+    <!-- Tengah -->
+    <div style="flex:1; margin:20px; text-align:center; min-width:200px;">
+      <div style="background-color:#8c9b77; color:black; font-weight:bold; padding:10px 30px; border-radius:20px; display:inline-block; margin-bottom:20px;">DINSOS</div>
+      <h3>Moto Layanan <br>SEGER DAN SEHAT</h3>
+      <div style="background-color:#8c9b77; color:black; padding:8px; margin:10px auto; border-radius:20px; width:120px; font-weight:bold;">Segera</div>
+      <div style="background-color:#8c9b77; color:black; padding:8px; margin:10px auto; border-radius:20px; width:120px; font-weight:bold;">Gesit</div>
+      <div style="background-color:#8c9b77; color:black; padding:8px; margin:10px auto; border-radius:20px; width:120px; font-weight:bold;">Ramah</div>
+      <div style="background-color:#8c9b77; color:black; padding:8px; margin:10px auto; border-radius:20px; width:120px; font-weight:bold;">Sepenuh Hati</div>
+    </div>
+
+    <!-- Kanan -->
+    <div style="flex:1; margin:20px; text-align:left; min-width:200px;">
+      <h2>Sekretariat</h2>
+      <p>Layanan yang ada pada Sekretariat yaitu:</p>
+      <p>
+        a. Pelayanan Administrasi Dinas;<br>
+        b. Pelayanan Informasi Publik;<br>
+        c. Pelayanan Rapat.
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="margin-top:50px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+    <img src="http://fc06.deviantart.net/fs71/i/2013/297/2/e/logo_pemerintah_propinsi_jawa_barat__indonesia_by_si_upoy-d6rnfsy.png" alt="Dinsos Jabar" style="height:40px;">
+    <img src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png" alt="Logo Bogor" style="height:40px;">
+  </div>
+
+  <!-- Responsive Script -->
+  <script>
+    function toggleDropdown() {
+      var drop = document.getElementById("dropdown");
+      if (drop.style.display === "block") {
+        drop.style.display = "none";
+      } else {
+        drop.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

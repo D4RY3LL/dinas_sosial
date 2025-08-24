@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Arsip - Dinsos</title>
+</head>
+<body style="margin:0; font-family:Arial, sans-serif; background-color:white;">
+
+  <!-- NAVBAR -->
+  <div style="background-color: #6b7c4a; color: white; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: relative;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <img src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png" alt="Logo Bogor" style="height:40px; width:40px;">
+      <span><b>DINAS SOSIAL</b></span>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 20px;">
+      <a href="profil.html" style="color: white; text-decoration: none;">Profil</a>
+      <a href="layanan.html" style="color: white; text-decoration: none;">Layanan</a>
+      <a href="arsip.html" style="color:black; text-decoration:none; padding:5px 10px; font-weight:bold; border-bottom:3px solid #c9a23f; background-color:#f2f2e9; border-radius:5px 5px 0 0;">Arsip</a>
+
+      <!-- Dropdown Menu (Burger) -->
+      <div style="position: relative;">
+        <span onclick="toggleDropdown()" style="cursor: pointer; font-size: 28px;">&#9776;</span>
+        <div id="dropdown" style="display: none; position: absolute; right: 0; top: 35px; background: white; color: black; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); min-width: 150px;">
+          <a href="pengaduan.html" style="display:block; padding:8px 12px; text-decoration:none; color:black;">Pengaduan</a>
+          <a href="dokumen.html" style="display:block; padding:8px 12px; text-decoration:none; color:black;">Dokumen</a>
+          <a href="kontak.html" style="display:block; padding:8px 12px; text-decoration:none; color:black;">Kontak</a>
+          <a href="login.html" style="display:block; padding:8px 12px; text-decoration:none; color:black;">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Judul -->
+  <h2 style="text-align:center; margin:30px 0; color:black;">Kegiatan yang telah kami lakukan</h2>
+
+  <!-- Daftar Arsip -->
+  <div style="max-width:900px; margin:0 auto; padding:0 20px;">
+
+    <!-- Item 1 -->
+    <div style="display:flex; margin-bottom:25px;">
+      <img src="dinas-sosial-provinsi-jawa-barat-saat-memaparkan-program-unggulan-3.jpg" alt="Kegiatan 1" style="width:200px; height:130px; object-fit:cover; margin-right:15px;">
+      <div>
+        <h3 style="margin:0; color:#333;">Dinsos Jabar Bina Disabilitas Hingga Bisa Mandiri dengan Program Unggulan</h3>
+        <p style="margin:5px 0; color:#555; font-size:14px;">
+          Dinas Sosial Provinsi Jawa Barat saat memaparkan program unggulan di Panti Pemberdayaan Sosial Bina Remaja (PPSBR) Lembang, Selasa (24/5/2022).
+        </p>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div style="display:flex; margin-bottom:25px;">
+      <img src="banjarkota.go.id-peringatan-hari-disabilitas-internasioanl-tingkat-kota-banjar-tahun-2024-660x330.jpg" alt="Kegiatan 2" style="width:200px; height:130px; object-fit:cover; margin-right:15px;">
+      <div>
+        <h3 style="margin:0; color:#333;">Puncak Peringatan Hari Disabilitas Internasional Tahun 2022 Tingkat Provinsi Jawa Barat</h3>
+        <p style="margin:5px 0; color:#555; font-size:14px;">
+          Bandung, 14 Desember 2022 – Pemerintah Provinsi Jawa Barat menyelenggarakan Peringatan Hari Disabilitas Internasional Tahun 2022 Tingkat Provinsi Jawa Barat di Gedung Sate pada 14 Desember 2022.
+        </p>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div style="display:flex; margin-bottom:25px;">
+      <img src="HUT RI ke-77.jpeg" alt="Kegiatan 3" style="width:200px; height:130px; object-fit:cover; margin-right:15px;">
+      <div>
+        <h3 style="margin:0; color:#333;">Warna Warni Opening Ceremony Perayaan HUT RI ke 77 di Dinsos Jabar</h3>
+        <p style="margin:5px 0; color:#555; font-size:14px;">
+          CIMAHI, 5 AGUSTUS 2022 – Warna warni meriah tampak di halaman Dinsos Jabar. Acara ini dimeriahkan dengan berbagai penampilan seni dan budaya yang memeriahkan HUT RI ke 77.
+        </p>
+      </div>
+    </div>
+  </div>
+
+<!-- Responsive Script -->
+  <script>
+    function toggleDropdown() {
+      var drop = document.getElementById("dropdown");
+      if (drop.style.display === "block") {
+        drop.style.display = "none";
+      } else {
+        drop.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
