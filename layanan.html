@@ -2,47 +2,356 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dinas Sosial - Layanan</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* NAVBAR STYLES */
+    .navbar {
+      background-color: #6b7c4a;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+      width: 40px;
+    }
+
+    .navbar-brand span {
+      font-weight: bold;
+    }
+
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .navbar-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-menu a.active {
+      color: black;
+      font-weight: bold;
+      border-bottom: 3px solid #c9a23f;
+      background-color: #f2f2e9;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .navbar-menu a:hover:not(.active) {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* MAIN CONTENT */
+    .main-content {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      padding: 30px;
+      flex-wrap: wrap;
+    }
+
+    .content-section {
+      flex: 1;
+      margin: 20px;
+      text-align: center;
+      min-width: 250px;
+    }
+
+    .content-section.left h2 {
+      margin-bottom: 20px;
+    }
+
+    .price {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .center-section {
+      text-align: center;
+    }
+
+    .dinsos-badge {
+      background-color: #8c9b77;
+      color: black;
+      font-weight: bold;
+      padding: 10px 30px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .service-item {
+      background-color: #8c9b77;
+      color: black;
+      padding: 8px;
+      margin: 10px auto;
+      border-radius: 20px;
+      width: 120px;
+      font-weight: bold;
+    }
+
+    .right-section {
+      text-align: left;
+    }
+
+    .right-section h2 {
+      margin-bottom: 15px;
+    }
+
+    .right-section p {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+    }
+
+    .footer img {
+      height: 40px;
+    }
+
+    /* MOBILE STYLES */
+    @media screen and (max-width: 768px) {
+      .navbar-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        background-color: white;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        border-radius: 0 0 8px 8px;
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .navbar-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .navbar-menu a {
+        padding: 15px 20px;
+        font-size: 16px;
+        color: #333 !important;
+        background-color: white;
+        border-bottom: 1px solid #e0e0e0;
+        width: 100%;
+        text-align: left;
+        transition: background-color 0.2s ease;
+      }
+
+      .navbar-menu a:hover {
+        background-color: #f5f5f5 !important;
+        border-radius: 0 !important;
+      }
+
+      .navbar-menu a.active {
+        color: #6b7c4a !important;
+        background-color: #f0f4ec !important;
+        font-weight: bold;
+        border-bottom: 1px solid #e0e0e0;
+        border-radius: 0 !important;
+      }
+
+      .navbar-menu a:last-child {
+        border-bottom: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .main-content {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      .content-section {
+        margin: 10px 0;
+        min-width: 100%;
+      }
+
+      .price {
+        font-size: 30px;
+      }
+
+      .service-item {
+        width: 150px;
+      }
+
+      .footer {
+        margin-top: 30px;
+        padding: 15px;
+      }
+
+      .footer img {
+        height: 35px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .navbar {
+        padding: 10px 15px;
+      }
+
+      .navbar-brand span {
+        font-size: 14px;
+      }
+
+      .main-content {
+        padding: 15px;
+      }
+
+      .price {
+        font-size: 25px;
+      }
+
+      .dinsos-badge {
+        padding: 8px 20px;
+        font-size: 14px;
+      }
+
+      .service-item {
+        width: 130px;
+        font-size: 14px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      h3 {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
-<body style="margin:0; font-family:Arial, sans-serif; background-color:#fff; color:#333;">
+<body>
 
   <!-- NAVBAR -->
-  <div style="background-color: #6b7c4a; color: white; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: relative;">
-    <div style="display:flex; align-items:center; gap:10px;">
-      <img src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png" alt="Logo Bogor" style="height:40px; width:40px;">
-      <span><b>DINAS SOSIAL</b></span>
+  <nav class="navbar">
+    <!-- Logo Kiri -->
+    <div class="navbar-brand">
+      <img
+        src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png"
+        alt="Logo Dinas Sosial"
+      />
+      <span>DINAS SOSIAL</span>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 20px;">
-      <a href="profil.html" style="color: white; text-decoration: none;">Profil</a>
-      <a href="layanan.html" style="color:black; text-decoration:none; padding:5px 10px; font-weight:bold; border-bottom:3px solid #c9a23f; background-color:#f2f2e9; border-radius:5px 5px 0 0;">Layanan</a>
-      <a href="arsip.html" style="color: white; text-decoration: none;">Arsip</a>
-
+    <!-- Hamburger Menu -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  </div>
+
+    <!-- Menu Items -->
+    <div class="navbar-menu" id="navbarMenu">
+      <a href="#">Home</a>
+      <a href="profil.html">Profil</a>
+      <a href="layanan.html" class="active">Layanan</a>
+      <a href="arsip.html">Arsip</a>
+      <a href="#">Pengaduan</a>
+      <a href="#">Dokumentasi</a>
+      <a href="#">Kontak</a>
+    </div>
+  </nav>
 
   <!-- MAIN CONTENT -->
-  <div style="display:flex; justify-content:space-around; align-items:flex-start; padding:30px; flex-wrap:wrap;">
-
+  <div class="main-content">
     <!-- Kiri -->
-    <div style="flex:1; margin:20px; text-align:center; min-width:200px;">
+    <div class="content-section left">
       <h2>Layanan Kami <br>Bebas Biaya</h2>
-      <div style="font-size:40px; font-weight:bold; margin:10px 0;">Rp 0,</div>
+      <div class="price">Rp 0,</div>
       <div>GRATIS</div>
     </div>
 
     <!-- Tengah -->
-    <div style="flex:1; margin:20px; text-align:center; min-width:200px;">
-      <div style="background-color:#8c9b77; color:black; font-weight:bold; padding:10px 30px; border-radius:20px; display:inline-block; margin-bottom:20px;">DINSOS</div>
+    <div class="content-section center-section">
+      <div class="dinsos-badge">DINSOS</div>
       <h3>Moto Layanan <br>SEGER DAN SEHAT</h3>
-      <div style="background-color:#8c9b77; color:black; padding:8px; margin:10px auto; border-radius:20px; width:120px; font-weight:bold;">Segera</div>
-      <div style="background-color:#8c9b77; color:black; padding:8px; margin:10px auto; border-radius:20px; width:120px; font-weight:bold;">Gesit</div>
-      <div style="background-color:#8c9b77; color:black; padding:8px; margin:10px auto; border-radius:20px; width:120px; font-weight:bold;">Ramah</div>
-      <div style="background-color:#8c9b77; color:black; padding:8px; margin:10px auto; border-radius:20px; width:120px; font-weight:bold;">Sepenuh Hati</div>
+      <div class="service-item">Segera</div>
+      <div class="service-item">Gesit</div>
+      <div class="service-item">Ramah</div>
+      <div class="service-item">Sepenuh Hati</div>
     </div>
 
     <!-- Kanan -->
-    <div style="flex:1; margin:20px; text-align:left; min-width:200px;">
+    <div class="content-section right-section">
       <h2>Sekretariat</h2>
       <p>Layanan yang ada pada Sekretariat yaitu:</p>
       <p>
@@ -54,10 +363,63 @@
   </div>
 
   <!-- FOOTER -->
-  <div style="margin-top:50px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-    <img src="http://fc06.deviantart.net/fs71/i/2013/297/2/e/logo_pemerintah_propinsi_jawa_barat__indonesia_by_si_upoy-d6rnfsy.png" alt="Dinsos Jabar" style="height:40px;">
-    <img src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png" alt="Logo Bogor" style="height:40px;">
+  <div class="footer">
+    <img src="http://fc06.deviantart.net/fs71/i/2013/297/2/e/logo_pemerintah_propinsi_jawa_barat__indonesia_by_si_upoy-d6rnfsy.png" alt="Dinsos Jabar">
+    <img src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png" alt="Logo Bogor">
   </div>
+
+  <script>
+    function toggleMenu() {
+      const hamburger = document.querySelector('.hamburger');
+      const navbarMenu = document.getElementById('navbarMenu');
+      
+      hamburger.classList.toggle('active');
+      navbarMenu.classList.toggle('active');
+    }
+
+    // Close menu when clicking on a link (mobile)
+    document.querySelectorAll('.navbar-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          const hamburger = document.querySelector('.hamburger');
+          const navbarMenu = document.getElementById('navbarMenu');
+          
+          hamburger.classList.remove('active');
+          navbarMenu.classList.remove('active');
+        }
+      });
+    });
+
+    // Close menu when clicking outside (mobile)
+    document.addEventListener('click', (e) => {
+      const navbar = document.querySelector('.navbar');
+      const navbarMenu = document.getElementById('navbarMenu');
+      const hamburger = document.querySelector('.hamburger');
+      
+      if (window.innerWidth <= 768 && 
+          !navbar.contains(e.target) && 
+          navbarMenu.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navbarMenu.classList.remove('active');
+      }
+    });
+
+    // Prevent menu from closing when clicking inside the menu
+    document.getElementById('navbarMenu').addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        const hamburger = document.querySelector('.hamburger');
+        const navbarMenu = document.getElementById('navbarMenu');
+        
+        hamburger.classList.remove('active');
+        navbarMenu.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 </html>

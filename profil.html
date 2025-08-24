@@ -1,63 +1,448 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Visi & Misi Kelas Agit RPL 1 Kelompok II</title>
-</head>
-<body style="margin:0; font-family: Arial, sans-serif;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dinas Sosial - Profil</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  <!-- NAVBAR -->
-  <div style="background-color: #6b7c4a; color: white; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: relative;">
-    <!-- Logo Kiri -->
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <img src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png" alt="Logo Dinas Sosial" style="height:40px; width:40px;">
-      <span style="font-weight: bold;">DINAS SOSIAL</span>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      /* NAVBAR STYLES */
+      .navbar {
+        background-color: #6b7c4a;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        position: relative;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;
+      }
+
+      .logo-section img {
+        height: 40px;
+        width: 40px;
+      }
+
+      .logo-section span {
+        font-weight: bold;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 5px 10px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-links a.active {
+        color: black;
+        font-weight: bold;
+        border-bottom: 3px solid #c9a23f;
+        background-color: #f2f2e9;
+        border-radius: 5px 5px 0 0;
+      }
+
+      .nav-links a:hover:not(.active) {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+      }
+
+      /* HAMBURGER MENU */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 5px;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 3px 0;
+        transition: 0.3s;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+
+      /* MAIN CONTENT */
+      .main-content {
+        padding: 30px 20px;
+        max-width: 900px;
+        margin: auto;
+      }
+
+      .main-content h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .main-content h3 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .main-content p {
+        text-align: center;
+        margin-bottom: 15px;
+        line-height: 1.6;
+      }
+
+      .main-content ol {
+        margin: 20px 0;
+        padding-left: 20px;
+      }
+
+      .main-content ol li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .team-members {
+        margin-top: 30px;
+      }
+
+      .team-members p {
+        text-align: left;
+        margin-bottom: 10px;
+      }
+
+      .social-media {
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+      }
+
+      .social-media img {
+        transition: transform 0.3s ease;
+      }
+
+      .social-media img:hover {
+        transform: scale(1.1);
+      }
+
+      /* MOBILE STYLES */
+      @media screen and (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-links {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          width: 200px;
+          background-color: white;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: stretch;
+          padding: 0;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+          border-radius: 0 0 8px 8px;
+          transform: translateY(-10px);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+          z-index: 1000;
+        }
+
+        .nav-links.active {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .nav-links a {
+          padding: 15px 20px;
+          font-size: 16px;
+          color: #333 !important;
+          background-color: white;
+          border-bottom: 1px solid #e0e0e0;
+          width: 100%;
+          text-align: left;
+          transition: background-color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+          background-color: #f5f5f5 !important;
+          border-radius: 0 !important;
+        }
+
+        .nav-links a.active {
+          color: #6b7c4a !important;
+          background-color: #f0f4ec !important;
+          font-weight: bold;
+          border-bottom: 1px solid #e0e0e0;
+          border-radius: 0 !important;
+        }
+
+        .nav-links a:last-child {
+          border-bottom: none;
+        }
+
+        .main-content {
+          padding: 20px 15px;
+        }
+
+        .main-content h2 {
+          font-size: 20px;
+          line-height: 1.4;
+        }
+
+        .main-content h3 {
+          font-size: 18px;
+        }
+
+        .main-content p {
+          font-size: 14px;
+        }
+
+        .main-content ol {
+          padding-left: 15px;
+        }
+
+        .main-content ol li {
+          font-size: 14px;
+        }
+
+        .logo-section span {
+          font-size: 14px;
+        }
+
+        .social-media {
+          justify-content: flex-start;
+          flex-wrap: wrap;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .navbar {
+          padding: 10px 15px;
+        }
+
+        .logo-section img {
+          height: 35px;
+          width: 35px;
+        }
+
+        .logo-section span {
+          font-size: 12px;
+        }
+
+        .nav-links {
+          width: 180px;
+        }
+
+        .main-content {
+          padding: 15px 10px;
+        }
+
+        .main-content h2 {
+          font-size: 18px;
+        }
+
+        .main-content h3 {
+          font-size: 16px;
+        }
+
+        .main-content p {
+          font-size: 13px;
+        }
+
+        .main-content ol li {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+      <!-- Logo Kiri -->
+      <div class="logo-section">
+        <img
+          src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png"
+          alt="Logo Dinas Sosial"
+        />
+        <span>DINAS SOSIAL</span>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="nav-links" id="navLinks">
+        <a href="#">Home</a>
+        <a href="profil.html" class="active">Profil</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="arsip.html">Arsip</a>
+        <a href="#">Pengaduan</a>
+        <a href="#">Dokumentasi</a>
+        <a href="#">Kontak</a>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+      <h2>Visi & Misi Kelas Agit RPL 1 Kelompok II</h2>
+
+      <h3>Visi :</h3>
+      <p>
+        Menjadi kelompok pelajar yang membanggakan dengan menjunjung tinggi
+        sikap sopan santun, semangat belajar, serta keterampilan yang unggul dalam berbagai bidang.
+      </p>
+
+      <h3 style="margin-top: 40px">Misi :</h3>
+      <ol>
+        <li>
+          Menanamkan sikap saling menghargai, sopan dalam bertutur kata dan
+          bertindak di lingkungan sekolah maupun luar.
+        </li>
+        <li>
+          Mengembangkan keterampilan individu maupun kelompok dalam bidang
+          akademik dan non-akademik.
+        </li>
+        <li>
+          Meningkatkan semangat belajar secara konsisten agar menjadi pelajar
+          yang berprestasi dan membanggakan.
+        </li>
+        <li>
+          Menumbuhkan rasa tanggung jawab dan kekompakan antar anggota kelompok.
+        </li>
+        <li>
+          Berkontribusi positif dalam setiap kegiatan kelas maupun sekolah
+          dengan penuh dedikasi dan etika.
+        </li>
+      </ol>
+
+      <div class="team-members">
+        <p>
+          <b>Ramyun</b> — Pemikir kreatif dan penuh semangat, selalu menjadi
+          pendorong tim untuk tetap aktif dan berinisiatif.
+        </p>
+        <p>
+          <b>Daryel</b> — Ahli matematika yang cerdas dan teliti, menjadi
+          andalan kelompok dalam pemecahan tugas logis.
+        </p>
+        <p>
+          <b>Hakim</b> — Tenang, bijak, dan tegas; menjaga kekompakan tim dan
+          rasa keadilan dalam kelompok.
+        </p>
+        <p>
+          <b>Fajar Agna</b> — Rajin dan bertanggung jawab, selalu siap
+          menyelesaikan tugas dengan sepenuh hati.
+        </p>
+        <p>
+          <b>Bang Bryan</b> — Ceria dan suportif; menjaga kekompakan tim dengan
+          energi positifnya.
+        </p>
+      </div>
+
+      <!-- SOCIAL MEDIA -->
+      <div class="social-media">
+        <a href="https://instagram.com" target="_blank">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+            alt="Instagram"
+            style="width: 30px; height: 30px"
+          />
+        </a>
+        <a href="https://wa.me/6281234567891" target="_blank">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp"
+            style="width: 30px; height: 30px"
+          />
+        </a>
+        <a href="https://youtube.com" target="_blank">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
+            alt="YouTube"
+            style="width: 60px; height: 30px"
+          />
+        </a>
+      </div>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 20px;">
-      <a href="profil.html" style="color:black; text-decoration:none; padding:5px 10px; font-weight:bold; border-bottom:3px solid #c9a23f; background-color:#f2f2e9; border-radius:5px 5px 0 0;">Profil</a>
-      <a href="layanan.html" style="color: white; text-decoration: none;">Layanan</a>
-      <a href="arsip.html" style="color: white; text-decoration: none;">Arsip</a> 
-      
-    </div>
-  </div>
+    <script>
+      // Hamburger Menu Toggle
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
 
-  <!-- MAIN CONTENT -->
-  <div style="padding: 30px; max-width: 900px; margin: auto;">
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
 
-    <h2 style="text-align: center;">Visi & Misi Kelas Agit RPL 1 Kelompok II</h2>
+      // Close menu when clicking on a link
+      const menuLinks = document.querySelectorAll('.nav-links a');
+      menuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+        });
+      });
 
-    <h3 style="text-align: center;">Visi :</h3>
-    <p style="text-align: center;">
-      Menjadi kelompok pelajar yang membanggakan dengan menjunjung tinggi sikap sopan santun,<br>
-      semangat belajar, serta keterampilan yang unggul dalam berbagai bidang.
-    </p>
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const navbar = document.querySelector('.navbar');
+        const isClickInsideNavbar = navbar.contains(event.target);
+        
+        if (!isClickInsideNavbar && navLinks.classList.contains('active')) {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+        }
+      });
 
-    <h3 style="margin-top: 40px;">Misi :</h3>
-    <ol>
-      <li>Menanamkan sikap saling menghargai, sopan dalam bertutur kata dan bertindak di lingkungan sekolah maupun luar.</li>
-      <li>Mengembangkan keterampilan individu maupun kelompok dalam bidang akademik dan non-akademik.</li>
-      <li>Meningkatkan semangat belajar secara konsisten agar menjadi pelajar yang berprestasi dan membanggakan.</li>
-      <li>Menumbuhkan rasa tanggung jawab dan kekompakan antar anggota kelompok.</li>
-      <li>Berkontribusi positif dalam setiap kegiatan kelas maupun sekolah dengan penuh dedikasi dan etika.</li>
-    </ol>
+      // Prevent menu from closing when clicking inside the menu
+      navLinks.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
 
-    <div style="margin-top: 30px;">
-      <p><b>Ramyun</b> — Pemikir kreatif dan penuh semangat, selalu menjadi pendorong tim untuk tetap aktif dan berinisiatif.</p>
-      <p><b>Daryel</b> — Ahli matematika yang cerdas dan teliti, menjadi andalan kelompok dalam pemecahan tugas logis.</p>
-      <p><b>Hakim</b> — Tenang, bijak, dan tegas; menjaga kekompakan tim dan rasa keadilan dalam kelompok.</p>
-      <p><b>Fajar Agna</b> — Rajin dan bertanggung jawab, selalu siap menyelesaikan tugas dengan sepenuh hati.</p>
-      <p><b>Bang Bryan</b> — Ceria dan suportif; menjaga kekompakan tim dengan energi positifnya.</p>
-    </div>
-
-    <!-- SOCIAL MEDIA -->
-    <div style="margin-top: 30px; display: flex; gap: 15px;">
-      <a href="https://instagram.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width:30px; height:30px;"></a>
-      <a href="https://wa.me/6281234567891" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:30px; height:30px;"></a>
-      <a href="https://youtube.com" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube" style="width:60px; height:30px;"></a>
-    </div>
-
-  </div>
-
-</body>
+      // Handle window resize
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          hamburger.classList.remove('active');
+          navLinks.classList.remove('active');
+        }
+      });
+    </script>
+  </body>
 </html>

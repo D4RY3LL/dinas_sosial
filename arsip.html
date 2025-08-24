@@ -2,67 +2,444 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Arsip - Dinsos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinas Sosial - Arsip</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: white;
+    }
+
+    /* NAVBAR STYLES */
+    .navbar {
+      background-color: #6b7c4a;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar-brand img {
+      height: 40px;
+      width: 40px;
+    }
+
+    .navbar-brand span {
+      font-weight: bold;
+    }
+
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .navbar-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-menu a.active {
+      color: black;
+      font-weight: bold;
+      border-bottom: 3px solid #c9a23f;
+      background-color: #f2f2e9;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .navbar-menu a:hover:not(.active) {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+    }
+
+    /* HAMBURGER MENU */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 3px 0;
+      transition: 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* MAIN CONTENT */
+    .page-title {
+      text-align: center;
+      margin: 30px 0;
+      color: black;
+      font-size: 24px;
+    }
+
+    .archive-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .archive-item {
+      display: flex;
+      margin-bottom: 25px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .archive-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .archive-image {
+      width: 200px;
+      height: 130px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .archive-content {
+      padding: 15px;
+      flex: 1;
+    }
+
+    .archive-content h3 {
+      margin: 0 0 10px 0;
+      color: #333;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    .archive-content p {
+      margin: 0;
+      color: #555;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* MOBILE STYLES */
+    @media screen and (max-width: 768px) {
+      .navbar-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
+        background-color: white;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        padding: 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        border-radius: 0 0 8px 8px;
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .navbar-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .navbar-menu a {
+        padding: 15px 20px;
+        font-size: 16px;
+        color: #333 !important;
+        background-color: white;
+        border-bottom: 1px solid #e0e0e0;
+        width: 100%;
+        text-align: left;
+        transition: background-color 0.2s ease;
+      }
+
+      .navbar-menu a:hover {
+        background-color: #f5f5f5 !important;
+        border-radius: 0 !important;
+      }
+
+      .navbar-menu a.active {
+        color: #6b7c4a !important;
+        background-color: #f0f4ec !important;
+        font-weight: bold;
+        border-bottom: 1px solid #e0e0e0;
+        border-radius: 0 !important;
+      }
+
+      .navbar-menu a:last-child {
+        border-bottom: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .page-title {
+        font-size: 20px;
+        margin: 20px 0;
+        padding: 0 10px;
+      }
+
+      .archive-container {
+        padding: 0 15px;
+      }
+
+      .archive-item {
+        flex-direction: column;
+        margin-bottom: 20px;
+      }
+
+      .archive-image {
+        width: 100%;
+        height: 200px;
+      }
+
+      .archive-content {
+        padding: 15px;
+      }
+
+      .archive-content h3 {
+        font-size: 16px;
+      }
+
+      .archive-content p {
+        font-size: 13px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .navbar {
+        padding: 10px 15px;
+      }
+
+      .navbar-brand span {
+        font-size: 14px;
+      }
+
+      .page-title {
+        font-size: 18px;
+        margin: 15px 0;
+      }
+
+      .archive-container {
+        padding: 0 10px;
+      }
+
+      .archive-item {
+        margin-bottom: 15px;
+      }
+
+      .archive-image {
+        height: 180px;
+      }
+
+      .archive-content {
+        padding: 12px;
+      }
+
+      .archive-content h3 {
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+
+      .archive-content p {
+        font-size: 12px;
+      }
+    }
+
+    /* TABLET LANDSCAPE */
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+      .archive-item {
+        flex-direction: row;
+      }
+
+      .archive-image {
+        width: 180px;
+        height: 120px;
+      }
+
+      .archive-content h3 {
+        font-size: 16px;
+      }
+    }
+  </style>
 </head>
-<body style="margin:0; font-family:Arial, sans-serif; background-color:white;">
+<body>
 
   <!-- NAVBAR -->
-  <div style="background-color: #6b7c4a; color: white; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; position: relative;">
-    <div style="display:flex; align-items:center; gap:10px;">
-      <img src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png" alt="Logo Bogor" style="height:40px; width:40px;">
-      <span><b>DINAS SOSIAL</b></span>
+  <nav class="navbar">
+    <!-- Logo Kiri -->
+    <div class="navbar-brand">
+      <img
+        src="https://pelayanansosial.kotabogor.go.id/assets/img/bogor.png"
+        alt="Logo Dinas Sosial"
+      />
+      <span>DINAS SOSIAL</span>
     </div>
 
-    <div style="display: flex; align-items: center; gap: 20px;">
-      <a href="profil.html" style="color: white; text-decoration: none;">Profil</a>
-      <a href="layanan.html" style="color: white; text-decoration: none;">Layanan</a>
-      <a href="arsip.html" style="color:black; text-decoration:none; padding:5px 10px; font-weight:bold; border-bottom:3px solid #c9a23f; background-color:#f2f2e9; border-radius:5px 5px 0 0;">Arsip</a>
-
+    <!-- Hamburger Menu -->
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  </div>
+
+    <!-- Menu Items -->
+    <div class="navbar-menu" id="navbarMenu">
+      <a href="#">Home</a>
+      <a href="profil.html">Profil</a>
+      <a href="layanan.html">Layanan</a>
+      <a href="arsip.html" class="active">Arsip</a>
+      <a href="#">Pengaduan</a>
+      <a href="#">Dokumentasi</a>
+      <a href="#">Kontak</a>
+    </div>
+  </nav>
 
   <!-- Judul -->
-  <h2 style="text-align:center; margin:30px 0; color:black;">Kegiatan yang telah kami lakukan</h2>
+  <h2 class="page-title">Kegiatan yang telah kami lakukan</h2>
 
   <!-- Daftar Arsip -->
-  <div style="max-width:900px; margin:0 auto; padding:0 20px;">
+  <div class="archive-container">
 
     <!-- Item 1 -->
-    <div style="display:flex; margin-bottom:25px;">
-      <img src="dinas-sosial-provinsi-jawa-barat-saat-memaparkan-program-unggulan-3.jpg" alt="Kegiatan 1" style="width:200px; height:130px; object-fit:cover; margin-right:15px;">
-      <div>
-        <h3 style="margin:0; color:#333;">Dinsos Jabar Bina Disabilitas Hingga Bisa Mandiri dengan Program Unggulan</h3>
-        <p style="margin:5px 0; color:#555; font-size:14px;">
+    <div class="archive-item">
+      <img 
+        src="dinas-sosial-provinsi-jawa-barat-saat-memaparkan-program-unggulan-3.jpg" 
+        alt="Kegiatan 1" 
+        class="archive-image"
+        onerror="this.style.backgroundColor='#e0e0e0'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<span style=color:#666>Gambar tidak tersedia</span>'"
+      >
+      <div class="archive-content">
+        <h3>Dinsos Jabar Bina Disabilitas Hingga Bisa Mandiri dengan Program Unggulan</h3>
+        <p>
           Dinas Sosial Provinsi Jawa Barat saat memaparkan program unggulan di Panti Pemberdayaan Sosial Bina Remaja (PPSBR) Lembang, Selasa (24/5/2022).
         </p>
       </div>
     </div>
 
     <!-- Item 2 -->
-    <div style="display:flex; margin-bottom:25px;">
-      <img src="banjarkota.go.id-peringatan-hari-disabilitas-internasioanl-tingkat-kota-banjar-tahun-2024-660x330.jpg" alt="Kegiatan 2" style="width:200px; height:130px; object-fit:cover; margin-right:15px;">
-      <div>
-        <h3 style="margin:0; color:#333;">Puncak Peringatan Hari Disabilitas Internasional Tahun 2022 Tingkat Provinsi Jawa Barat</h3>
-        <p style="margin:5px 0; color:#555; font-size:14px;">
+    <div class="archive-item">
+      <img 
+        src="banjarkota.go.id-peringatan-hari-disabilitas-internasioanl-tingkat-kota-banjar-tahun-2024-660x330.jpg" 
+        alt="Kegiatan 2" 
+        class="archive-image"
+        onerror="this.style.backgroundColor='#e0e0e0'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<span style=color:#666>Gambar tidak tersedia</span>'"
+      >
+      <div class="archive-content">
+        <h3>Puncak Peringatan Hari Disabilitas Internasional Tahun 2022 Tingkat Provinsi Jawa Barat</h3>
+        <p>
           Bandung, 14 Desember 2022 – Pemerintah Provinsi Jawa Barat menyelenggarakan Peringatan Hari Disabilitas Internasional Tahun 2022 Tingkat Provinsi Jawa Barat di Gedung Sate pada 14 Desember 2022.
         </p>
       </div>
     </div>
 
     <!-- Item 3 -->
-    <div style="display:flex; margin-bottom:25px;">
-      <img src="HUT RI ke-77.jpeg" alt="Kegiatan 3" style="width:200px; height:130px; object-fit:cover; margin-right:15px;">
-      <div>
-        <h3 style="margin:0; color:#333;">Warna Warni Opening Ceremony Perayaan HUT RI ke 77 di Dinsos Jabar</h3>
-        <p style="margin:5px 0; color:#555; font-size:14px;">
+    <div class="archive-item">
+      <img 
+        src="HUT RI ke-77.jpeg" 
+        alt="Kegiatan 3" 
+        class="archive-image"
+        onerror="this.style.backgroundColor='#e0e0e0'; this.style.display='flex'; this.style.alignItems='center'; this.style.justifyContent='center'; this.innerHTML='<span style=color:#666>Gambar tidak tersedia</span>'"
+      >
+      <div class="archive-content">
+        <h3>Warna Warni Opening Ceremony Perayaan HUT RI ke 77 di Dinsos Jabar</h3>
+        <p>
           CIMAHI, 5 AGUSTUS 2022 – Warna warni meriah tampak di halaman Dinsos Jabar. Acara ini dimeriahkan dengan berbagai penampilan seni dan budaya yang memeriahkan HUT RI ke 77.
         </p>
       </div>
     </div>
   </div>
 
-<!-- Responsive Script -->
-  
+  <script>
+    function toggleMenu() {
+      const hamburger = document.querySelector('.hamburger');
+      const navbarMenu = document.getElementById('navbarMenu');
+      
+      hamburger.classList.toggle('active');
+      navbarMenu.classList.toggle('active');
+    }
+
+    // Close menu when clicking on a link (mobile)
+    document.querySelectorAll('.navbar-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          const hamburger = document.querySelector('.hamburger');
+          const navbarMenu = document.getElementById('navbarMenu');
+          
+          hamburger.classList.remove('active');
+          navbarMenu.classList.remove('active');
+        }
+      });
+    });
+
+    // Close menu when clicking outside (mobile)
+    document.addEventListener('click', (e) => {
+      const navbar = document.querySelector('.navbar');
+      const navbarMenu = document.getElementById('navbarMenu');
+      const hamburger = document.querySelector('.hamburger');
+      
+      if (window.innerWidth <= 768 && 
+          !navbar.contains(e.target) && 
+          navbarMenu.classList.contains('active')) {
+        hamburger.classList.remove('active');
+        navbarMenu.classList.remove('active');
+      }
+    });
+
+    // Prevent menu from closing when clicking inside the menu
+    document.getElementById('navbarMenu').addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        const hamburger = document.querySelector('.hamburger');
+        const navbarMenu = document.getElementById('navbarMenu');
+        
+        hamburger.classList.remove('active');
+        navbarMenu.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 </html>
