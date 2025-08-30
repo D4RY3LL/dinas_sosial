@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Kontak</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8e8e8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .contact-form {
+            background-color: #e0e0e0;
+            padding: 40px 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            background-color: #b8b8b8;
+            font-size: 14px;
+            color: #333;
+            resize: vertical;
+        }
+
+        .form-group input[type="file"] {
+            padding: 8px 12px;
+            background-color: #b8b8b8;
+            cursor: pointer;
+        }
+
+        .form-group input[type="file"]::-webkit-file-upload-button {
+            background-color: #8faa7a;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 3px;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .form-group input[type="file"]::-webkit-file-upload-button:hover {
+            background-color: #7d9968;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background-color: #a8a8a8;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            font-family: Arial, sans-serif;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #8faa7a;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #7d9968;
+        }
+
+        .submit-btn:active {
+            background-color: #6b8556;
+        }
+
+        .back-btn {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #8faa7a;
+            border-radius: 4px;
+            background-color: transparent;
+            color: #8faa7a;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .back-btn:hover {
+            background-color: #8faa7a;
+            color: #333;
+        }
+
+        .back-btn:active {
+            background-color: #7d9968;
+        }
+
+        .login-text {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .login-text .login-link {
+            color: #8faa7a;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .login-text .login-link:hover {
+            color: #7d9968;
+        }
+
+        @media (max-width: 480px) {
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-form">
+        <h2 class="form-title">FORM PENGADUAN</h2>
+        <form>
+            <div class="form-group">
+                <label for="date">*Tanggal</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="complaint">*Isi Pengaduan</label>
+                <textarea id="complaint" name="complaint" required placeholder="Jelaskan pengaduan Anda..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="photo">*Unggah Bukti Foto</label>
+                <input type="file" id="photo" name="photo" accept="image/*" required>
+            </div>
+            
+            <button type="submit" class="submit-btn">KIRIM PENGADUAN</button>
+            
+            <a href="home.html" class="back-btn">KEMBALI KE HOME</a>
+            
+            <span class="login-text">Belum login? <a href="login.html" class="login-link">Login</a></span>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const date = document.getElementById('date').value;
+            const complaint = document.getElementById('complaint').value;
+            const photo = document.getElementById('photo').files[0];
+            
+            if (date && complaint && photo) {
+                alert('Pengaduan berhasil dikirim!\n\nTanggal: ' + date + '\nPengaduan: ' + complaint + '\nBukti Foto: ' + photo.name);
+                this.reset();
+            } else {
+                alert('Harap isi semua field yang wajib diisi (*)');
+            }
+        });
+    </script>
+</body>
+</html>

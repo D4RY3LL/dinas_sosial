@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Dinas Sosial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8e8e8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #e0e0e0;
+            padding: 30px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo-section {
+            background-color: #8faa7a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .logo {
+            width: 35px;
+            height: 35px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border: none;
+            border-radius: 4px;
+            background-color: #b8b8b8;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            background-color: #a8a8a8;
+        }
+
+        .icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+            font-size: 16px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #8faa7a;
+            color: #333;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #7d9968;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .form-footer a {
+            color: #8faa7a;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .form-footer a:hover {
+            color: #7d9968;
+        }
+
+        .back-btn {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #8faa7a;
+            border-radius: 4px;
+            background-color: transparent;
+            color: #8faa7a;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .back-btn:hover {
+            background-color: #8faa7a;
+            color: #333;
+        }
+
+        @media (max-width: 480px) {
+            .form-container {
+                width: 100%;
+                max-width: 350px;
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="http://fc06.deviantart.net/fs71/i/2013/297/2/e/logo_pemerintah_propinsi_jawa_barat__indonesia_by_si_upoy-d6rnfsy.png" alt="Logo Jawa Barat">
+                </div>
+                <span>DINAS SOSIAL</span>
+            </div>
+            <h2 class="form-title">LOGIN</h2>
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <span class="icon">✉️</span>
+                <input type="email" id="loginEmail" placeholder="Email" required>
+            </div>
+            
+            <div class="form-group">
+                <span class="icon">🔒</span>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <span class="password-toggle" onclick="togglePassword('loginPassword')">👁️</span>
+            </div>
+            
+            <button type="submit" class="submit-btn">Login</button>
+            
+            <a href="javascript:history.back()" class="back-btn">KEMBALI</a>
+            
+            <div class="form-footer">
+                Belum punya akun? <a href="register.html">Register disini</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const toggle = input.nextElementSibling;
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                toggle.textContent = '🙈';
+            } else {
+                input.type = 'password';
+                toggle.textContent = '👁️';
+            }
+        }
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (email && password) {
+                alert('Login berhasil!\nEmail: ' + email);
+                // Redirect ke home
+                window.location.href = 'home.html';
+            }
+        });
+    </script>
+</body>
+</html>
